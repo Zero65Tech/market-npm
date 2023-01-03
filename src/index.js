@@ -1,6 +1,6 @@
 const holidays    = require('./holidays.js');
 const specialDays = require('./special-days.js');
-const muhuratDay  = Math.floor(new Date('2022-11-12').getTime() / 1000 / 60 / 60 / 24); // GMT
+const muhuratDay  = Math.floor(new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24); // GMT
 
 
 function istDayAndHr = (date) => {

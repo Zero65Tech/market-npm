@@ -20,5 +20,5 @@ module.exports = [
   '2020-02-01', // Budget Day
   '2020-11-14', // Muhurat Trading
   // 2023
-  '2022-11-12', // Muhurat Trading
+  '2023-11-12', // Muhurat Trading
 ]
