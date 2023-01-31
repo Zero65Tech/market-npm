@@ -3,7 +3,7 @@ const specialDays = require('./special-days.js');
 const muhuratDay  = Math.floor(new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24); // GMT
 
 
-function istDayAndHr = (date) => {
+function istDayAndHr(date) {
   let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
   return [ Math.floor(hrs / 24), hrs % 24 ];
 }
