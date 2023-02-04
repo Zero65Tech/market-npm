@@ -1,6 +1,7 @@
 const holidays    = require('./holidays.js');
 const specialDays = require('./special-days.js');
 const muhuratDay  = Math.floor(new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24); // GMT
+const mfIsns      = require('./mf-isns.json');
 
 
 function istDayAndHr(date) {
@@ -69,4 +70,12 @@ exports.isHoliday = (date = new Date()) => {
   else
     return specialDays.indexOf(dateStr) == -1;
 
+}
+
+
+
+exports.isn = (name) => {
+  if(name.indexOf('/') != -1)
+    name = name.substring(0, name.indexOf('/')).trim();
+  return mfIsns[name];
 }
