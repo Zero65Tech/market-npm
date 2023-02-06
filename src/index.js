@@ -77,5 +77,7 @@ exports.isHoliday = (date = new Date()) => {
 exports.isn = (name) => {
   if(name.indexOf('/') != -1)
     name = name.substring(0, name.indexOf('/')).trim();
+  else if(name.indexOf('::') != -1)
+    name = name.substring(0, name.indexOf('::')).trim();
   return mfIsns[name];
 }
