@@ -20,7 +20,7 @@ exports.isOpen = () => {
   if(day == muhuratDay)
     return hrs >= 18.25 && hrs < 19.25;
   else
-    return hrs >= 9.5 && hrs < 15.5;
+    return hrs >= 9 && hrs < 15.5;
 
 }
 
@@ -34,7 +34,7 @@ exports.hasOpened = () => {
   if(day == muhuratDay)
     return hrs >= 18.25;
   else
-    return hrs >= 9.5;
+    return hrs >= 9;
 
 }
 
