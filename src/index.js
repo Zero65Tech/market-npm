@@ -4,11 +4,30 @@ const muhuratDay  = Math.floor(new Date('2023-11-12').getTime() / 1000 / 60 / 60
 const mfIsns      = require('./mf-isns.json');
 
 
+exports.info = (symbol) => {
+
+  // BANKNIFTY20N0523500PE, BANKNIFTY23APR40000PE
+  // RELIANCE23APR2300CE, RELIANCE23APR2300PE
+  // M21OCT720PE, COALINDIA21JUL142.5PE
+
+  let opt = symbol.match(/^(\S+?)(\d{2})(\w{3})([\d\.]+)(PE|CE)$/);
+  if(opt)
+    return { script: opt[1], expiry: opt[2] + opt[3], strike: parseFloat(opt[4]) };
+
+  let fut = symbol.match(/^(\S+?)(\d{2})(\w{3})FUT$/);
+  if(fut)
+    return { script: fut[1], expiry: fut[2] + fut[3] };
+
+  return { script: symbol };
+
+}
+
+
+
 function istDayAndHr(date) {
   let hrs = date.getTime() / 1000 / 60 / 60 + 5.5;
   return [ Math.floor(hrs / 24), hrs % 24 ];
 }
-
 
 exports.isOpen = () => {
 
