@@ -1,6 +1,6 @@
 const holidays    = require('./holidays.js');
 const specialDays = require('./special-days.js');
-const muhuratDay  = Math.floor(new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24); // GMT
+const muhuratDay  = new Date('2023-11-12').getTime() / 1000 / 60 / 60 / 24; // GMT
 const mfIsns      = require('./mf-isns.json');
 
 
@@ -19,6 +19,25 @@ exports.info = (symbol) => {
     return { script: fut[1], expiry: fut[2] + fut[3] };
 
   return { script: symbol };
+
+}
+
+exports.expiry = (expiry) => {
+
+  let year = 2000 + parseInt(expiry.substring(0, 2));
+  let month = expiry.substring(2);
+  month = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC' ].indexOf(month);
+  let day = new Date(year, month + 1, 0).getDate(); // Last day of the month
+
+  while(new Date(year, month, day).getDay() != 4)
+    day--;
+
+  while(true) {
+    let date = `${ year }-${ String(month + 1).padStart(2, '0') }-${ String(day).padStart(2, '0') }`;
+    if(holidays[year - 2011].indexOf(date) == -1)
+      return date;
+    day--;
+  }
 
 }
 
