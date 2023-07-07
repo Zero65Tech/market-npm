@@ -12,11 +12,11 @@ exports.info = (symbol) => {
 
   let opt = symbol.match(/^(\S+?)(\d{2})(\w{3})([\d\.]+)(PE|CE)$/);
   if(opt)
-    return { script: opt[1], expiry: opt[2] + opt[3], strike: parseFloat(opt[4]) };
+    return { script: opt[1], expiry: opt[2] + opt[3], strike: parseFloat(opt[4]), type: opt[5] };
 
   let fut = symbol.match(/^(\S+?)(\d{2})(\w{3})FUT$/);
   if(fut)
-    return { script: fut[1], expiry: fut[2] + fut[3] };
+    return { script: fut[1], expiry: fut[2] + fut[3], type: 'FUT' };
 
   return { script: symbol };
 
